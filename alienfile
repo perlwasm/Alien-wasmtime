@@ -1,5 +1,14 @@
 use alienfile;
 use Path::Tiny qw( path );
+use Config;
+
+unless($^O =~ /^(MSWin32|linux|darwin)$/)
+{
+  print "Operating system not supported.\n";
+  print "If we are missing a binary tarball that could work for your platform, please comment here:\n";
+  print "https://github.com/perlwasm/Alien-wasmtime/issues/2\n";
+  exit;
+}
 
 configure { requires 'Path::Tiny' };
 
@@ -35,6 +44,7 @@ share {
   else
   {
     build sub {
+      my($build) = @_;
       my $stage = path($build->install_prop->{stage})->canonpath;
       $build->system("xcopy . $stage /E");
     };
