@@ -7,6 +7,9 @@ use Alien::wasmtime;
 alien_ok 'Alien::wasmtime';
 alien_diag 'Alien::wasmtime';
 
+my @dll = Alien::wasmtime->dynamic_libs;
+ok scalar(@dll), 'at least one dynamic library found';
+
 done_testing;
 
 
