@@ -10,18 +10,21 @@ share {
   if($^O eq 'linux')
   {
     start_url 'https://github.com/bytecodealliance/wasmtime/releases/download/cranelift-v0.60.0/wasmtime-cranelift-v0.60.0-x86_64-linux-c-api.tar.xz';
+    plugin 'Download';
+    plugin Extract => 'tar.xz';
   }
   elsif($^O eq 'MSWin32')
   {
     start_url 'https://github.com/bytecodealliance/wasmtime/releases/download/cranelift-v0.60.0/wasmtime-cranelift-v0.60.0-x86_64-windows-c-api.zip';
+    plugin 'Download';
+    plugin Extract => 'zip';
   }
   elsif($^O eq 'darwin')
   {
     start_url 'https://github.com/bytecodealliance/wasmtime/releases/download/cranelift-v0.60.0/wasmtime-cranelift-v0.60.0-x86_64-macos-c-api.tar.xz';
+    plugin 'Download';
+    plugin Extract => 'tar.xz';
   }
-
-  plugin 'Download';
-  plugin Extract => 'tar.xz';
 
   if($^O ne 'MSWin32')
   {
