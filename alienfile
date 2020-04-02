@@ -1,13 +1,47 @@
 use alienfile;
-plugin 'PkgConfig' => 'libfoo';
+use Path::Tiny qw( path );
+
+configure { requires 'Path::Tiny' };
+
+probe sub { 'share' };
+
 share {
-  plugin Download => (
-    url => 'http://...',
-    filter => qr/*\.tar\.gz$/,
-    version => qr/([0-9\.]+)/,
-  );
-  plugin Extract => 'tar.gz';
-  plugin 'Build::Autoconf';
+
+  if($^O eq 'linux')
+  {
+    start_url 'https://github.com/bytecodealliance/wasmtime/releases/download/cranelift-v0.60.0/wasmtime-cranelift-v0.60.0-x86_64-linux-c-api.tar.xz';
+  }
+  elsif($^O eq 'MSWin32')
+  {
+    start_url 'https://github.com/bytecodealliance/wasmtime/releases/download/cranelift-v0.60.0/wasmtime-cranelift-v0.60.0-x86_64-windows-c-api.zip';
+  }
+  elsif($^O eq 'darwin')
+  {
+    start_url 'https://github.com/bytecodealliance/wasmtime/releases/download/cranelift-v0.60.0/wasmtime-cranelift-v0.60.0-x86_64-macos-c-api.tar.xz';
+  }
+
+  plugin 'Download';
+  plugin Extract => 'tar.xz';
+
+  if($^O ne 'MSWin32')
+  {
+    build [
+      'cp -r * %{.install.prefix}',
+    ];
+  }
+  else
+  {
+    build sub {
+      my($build) = @_;
+      my $prefix = path($build->install_prop->{prefix});
+      system "xcopy @{[ $prefix->canonpath ]}\\ /E/H";
+    };
+  }
+
+  gather sub {
+    my($build) = @_;
+    $build->runtime_prop->{version} = '0.60.0';
+  };
 };
 
 
