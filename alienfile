@@ -34,7 +34,11 @@ share {
     build sub {
       my($build) = @_;
       my $prefix = path($build->install_prop->{prefix});
-      system "xcopy @{[ $prefix->canonpath ]}\\ /E/H";
+      $prefix->mkpath;
+      my @cmd = ('xcopy', $prefix->canonpath . '\\', '/E/H');
+      log "+ @cmd\n";
+      system @cmd;
+      die "command failed" if $?;
     };
   }
 
