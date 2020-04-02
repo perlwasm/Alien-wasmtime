@@ -26,19 +26,14 @@ share {
   if($^O ne 'MSWin32')
   {
     build [
-      'cp -r * %{.install.prefix}',
+      'cp -r * %{.install.stage}',
     ];
   }
   else
   {
     build sub {
-      my($build) = @_;
-      my $prefix = path($build->install_prop->{prefix});
-      $prefix->mkpath;
-      my @cmd = ('xcopy', $prefix->canonpath . '\\', '/E/H');
-      log "+ @cmd\n";
-      system @cmd;
-      die "command failed" if $?;
+      my $stage = path($build->install_prop->{stage})->canonpath;
+      $build->system("xcopy . $stage /E");
     };
   }
 
