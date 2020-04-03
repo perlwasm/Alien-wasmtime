@@ -2,6 +2,30 @@
 
 Find or download wasmtime for use by other Perl modules
 
+# SYNOPSIS
+
+```perl
+use Alien::wasmtime;
+use FFI::Platypus 1.00;
+
+my $ffi = FFI::Platypus->new(
+  api => 1,
+  lib => [Alien::wasmtime->dynamic_libs],
+);
+```
+
+# DESCRIPTION
+
+This [Alien](https://metacpan.org/pod/Alien) provides `wasmtime` a runtime for Wasm (Web Assembly).
+It's intended to be used by FFI (not XS) to build Wasm bindings for
+Perl.
+
+# SEE ALSO
+
+- [Wasm::Wasmtime](https://metacpan.org/pod/Wasm::Wasmtime)
+- [Alien](https://metacpan.org/pod/Alien)
+- [FFI::Platypus](https://metacpan.org/pod/FFI::Platypus)
+
 # AUTHOR
 
 Graham Ollis <plicease@cpan.org>
