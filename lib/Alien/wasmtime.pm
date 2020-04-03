@@ -34,7 +34,7 @@ Returns the list of libraries needed to use C<wasmtime> via FFI.
 
 =head1 CAVEATS
 
-Wasm and <wasmtime> is a moving target at the moment, so expect breakage
+Wasm and C<wasmtime> is a moving target at the moment, so expect breakage
 until it becomes stable.
 
 Normally L<Alien>s should try to use the system library before downloading

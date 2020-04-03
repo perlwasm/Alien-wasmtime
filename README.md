@@ -32,7 +32,7 @@ Returns the list of libraries needed to use `wasmtime` via FFI.
 
 # CAVEATS
 
-Wasm and &lt;wasmtime> is a moving target at the moment, so expect breakage
+Wasm and `wasmtime` is a moving target at the moment, so expect breakage
 until it becomes stable.
 
 Normally [Alien](https://metacpan.org/pod/Alien)s should try to use the system library before downloading
