@@ -72,6 +72,8 @@ share {
   gather sub {
     my($build) = @_;
     $build->runtime_prop->{version} = '0.60.0';
+    $build->runtime_prop->{cflags}  = "-I@{[ $build->runtime_prop->{prefix} ]}/include ";
+    $build->runtime_prop->{libs}    = "-L@{[ $build->runtime_prop->{prefix} ]}/lib -lwasmtime ";
   };
 };
 
