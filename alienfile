@@ -2,7 +2,26 @@ use alienfile;
 use Path::Tiny qw( path );
 use Config;
 
-unless($^O =~ /^(MSWin32|linux|darwin)$/)
+if($^O eq 'linux')
+{
+  # archname=x86_64-linux-gnu-thread-multi
+  if($Config{archname} !~ /^x86_64-linux/)
+  {
+    print "Only x86_64 is supported.\n";
+    print "If we are missing a binary tarball that could work for your platform, please comment here:\n";
+    print "https://github.com/perlwasm/Alien-wasmtime/issues/2\n";
+    exit;
+  }
+}
+elsif($^O eq 'MSWin32')
+{
+  # TODO: check for x86_64
+}
+elsif($^O eq 'darwin')
+{
+  # TODO: check for x86_64
+}
+else
 {
   print "Operating system not supported.\n";
   print "If we are missing a binary tarball that could work for your platform, please comment here:\n";
