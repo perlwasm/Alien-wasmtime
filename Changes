@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}},
 
 {{$NEXT}}
 
+0.04      2020-04-08 16:26:41 -0600
+  - First cpan release
+
 0.03      2020-04-06 16:45:23 -0600
   - Bump to version 0.15.0 (gh#5)
 

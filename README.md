@@ -44,9 +44,9 @@ This [Alien](https://metacpan.org/pod/Alien) is geared for use with FFI only.
 
 # SEE ALSO
 
-- [Wasm::Wasmtime](https://metacpan.org/pod/Wasm::Wasmtime)
+- [Wasm::Wasmtime](https://metacpan.org/pod/Wasm%3A%3AWasmtime)
 - [Alien](https://metacpan.org/pod/Alien)
-- [FFI::Platypus](https://metacpan.org/pod/FFI::Platypus)
+- [FFI::Platypus](https://metacpan.org/pod/FFI%3A%3APlatypus)
 
 # AUTHOR
 
