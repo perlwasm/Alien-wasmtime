@@ -30,6 +30,17 @@ my @libs = Alien::wasmtime->dynamic_libs;
 
 Returns the list of libraries needed to use `wasmtime` via FFI.
 
+# ENVIRONMENT
+
+- `ALIEN_WASMTIME_VERSION`
+
+    Override the version of `wasmtime` downloaded.  To get the latest development
+    release you can install with:
+
+    ```
+    $ env ALIEN_WASMTIME_VERSION=dev cpanm Alien::wasmtime
+    ```
+
 # CAVEATS
 
 Wasm and `wasmtime` is a moving target at the moment, so expect breakage
@@ -44,9 +55,9 @@ This [Alien](https://metacpan.org/pod/Alien) is geared for use with FFI only.
 
 # SEE ALSO
 
-- [Wasm::Wasmtime](https://metacpan.org/pod/Wasm%3A%3AWasmtime)
+- [Wasm::Wasmtime](https://metacpan.org/pod/Wasm::Wasmtime)
 - [Alien](https://metacpan.org/pod/Alien)
-- [FFI::Platypus](https://metacpan.org/pod/FFI%3A%3APlatypus)
+- [FFI::Platypus](https://metacpan.org/pod/FFI::Platypus)
 
 # AUTHOR
 

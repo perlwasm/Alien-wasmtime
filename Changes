@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}},
 
 {{$NEXT}}
+  - use ALIEN_WASMTIME_VERSION to override the version of
+    wasmtime downloaded (gh#7)
 
 0.04      2020-04-08 16:26:41 -0600
   - First cpan release

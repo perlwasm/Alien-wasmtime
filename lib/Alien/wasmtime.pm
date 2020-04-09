@@ -32,6 +32,19 @@ Perl.
 
 Returns the list of libraries needed to use C<wasmtime> via FFI.
 
+=head1 ENVIRONMENT
+
+=over 4
+
+=item C<ALIEN_WASMTIME_VERSION>
+
+Override the version of C<wasmtime> downloaded.  To get the latest development
+release you can install with:
+
+ $ env ALIEN_WASMTIME_VERSION=dev cpanm Alien::wasmtime
+
+=back
+
 =head1 CAVEATS
 
 Wasm and C<wasmtime> is a moving target at the moment, so expect breakage

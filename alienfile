@@ -47,21 +47,23 @@ probe sub { 'share' };
 
 share {
 
+  my $version = $ENV{ALIEN_WASMTIME_VERSION} || 'v0.15.0';
+
   if($^O eq 'linux')
   {
-    start_url 'https://github.com/bytecodealliance/wasmtime/releases/download/v0.15.0/wasmtime-v0.15.0-x86_64-linux-c-api.tar.xz';
+    start_url "https://github.com/bytecodealliance/wasmtime/releases/download/$version/wasmtime-$version-x86_64-linux-c-api.tar.xz";
     plugin 'Download';
     plugin Extract => 'tar.xz';
   }
   elsif($^O eq 'MSWin32')
   {
-    start_url 'https://github.com/bytecodealliance/wasmtime/releases/download/v0.15.0/wasmtime-v0.15.0-x86_64-windows-c-api.zip';
+    start_url "https://github.com/bytecodealliance/wasmtime/releases/download/$version/wasmtime-$version-x86_64-windows-c-api.zip";
     plugin 'Download';
     plugin Extract => 'zip';
   }
   elsif($^O eq 'darwin')
   {
-    start_url 'https://github.com/bytecodealliance/wasmtime/releases/download/v0.15.0/wasmtime-v0.15.0-x86_64-macos-c-api.tar.xz';
+    start_url "https://github.com/bytecodealliance/wasmtime/releases/download/$version/wasmtime-$version-x86_64-macos-c-api.tar.xz";
     plugin 'Download';
     plugin Extract => 'tar.xz';
   }
@@ -83,7 +85,8 @@ share {
 
   gather sub {
     my($build) = @_;
-    $build->runtime_prop->{version} = '0.15.0';
+    $build->runtime_prop->{version} = $version;
+    $build->runtime_prop->{version} =~ s/^v//;
     $build->runtime_prop->{cflags}  = "-I@{[ $build->runtime_prop->{prefix} ]}/include ";
     $build->runtime_prop->{libs}    = "-L@{[ $build->runtime_prop->{prefix} ]}/lib -lwasmtime ";
   };
