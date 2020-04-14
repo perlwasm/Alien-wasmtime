@@ -1,6 +1,12 @@
 use alienfile;
 use Path::Tiny qw( path );
+use File::Which qw( which );
 use Config;
+
+configure {
+  requires 'Path::Tiny';
+  requires 'File::Which';
+};
 
 if($^O eq 'linux')
 {
@@ -11,6 +17,43 @@ if($^O eq 'linux')
     print "If we are missing a binary tarball that could work for your platform, please comment here:\n";
     print "https://github.com/perlwasm/Alien-wasmtime/issues/2\n";
     exit;
+  }
+
+  if(which 'bash')
+  {
+    # call ulimit via bash in case
+    # the user's shell is not bash.
+    my($vm) = grep /virtual memory/, `bash -c 'ulimit -a'`;
+    if(defined $vm)
+    {
+      chomp $vm;
+      if($vm !~ /unlimited/)
+      {
+        log " !! WARNING !! WARNING !!";
+        log " !! WARNING !! WARNING !!";
+        log " ";
+        log " ";
+        log "You seem to have a virtual address limit set.  This can cause";
+        log "problems with software like Wasmtime which use `PROT_NONE` pages";
+        log "for memory OOB checks or allocation";
+        log "Please see";
+        log "https://github.com/perlwasm/Wasm/issues/22";
+        log " ";
+        log " ";
+        log " !! WARNING !! WARNING !!";
+        log " !! WARNING !! WARNING !!";
+      }
+    }
+    else
+    {
+      log "unable to find virtual memory limit";
+      log "https://github.com/perlwasm/Wasm/issues/22";
+    }
+  }
+  else
+  {
+    log "unable to find bash, not checking virtual memory limits";
+    log "https://github.com/perlwasm/Wasm/issues/22";
   }
 }
 elsif($^O eq 'MSWin32')
@@ -40,8 +83,6 @@ else
   print "https://github.com/perlwasm/Alien-wasmtime/issues/2\n";
   exit;
 }
-
-configure { requires 'Path::Tiny' };
 
 probe sub { 'share' };
 
