@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}},
 
 {{$NEXT}}
+  - Add support for aarch64/arm64 (requires dev version) (gh#2, gh#10)
 
 0.07      2020-04-14 10:41:36 -0600
   - Extra diagnostics and tests to detect virtual memory limits
