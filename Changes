@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}},
 
 {{$NEXT}}
+
+0.08      2020-04-24 09:26:09 -0600
   - Add support for aarch64/arm64 (requires dev version) (gh#2, gh#10)
 
 0.07      2020-04-14 10:41:36 -0600
