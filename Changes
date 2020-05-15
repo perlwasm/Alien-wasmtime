@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}},
 
 {{$NEXT}}
+  - Bump version of wasmtime to 0.16.0 (gh#12)
 
 0.08      2020-04-24 09:26:09 -0600
   - Add support for aarch64/arm64 (requires dev version) (gh#2, gh#10)
