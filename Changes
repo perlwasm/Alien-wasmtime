@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}},
 
 {{$NEXT}}
+
+0.09      2020-05-15 10:57:43 -0600
   - Bump version of wasmtime to 0.16.0 (gh#12)
 
 0.08      2020-04-24 09:26:09 -0600
