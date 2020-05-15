@@ -16,6 +16,7 @@ if($^O eq 'linux')
   {
     if($1 eq 'aarch64')
     {
+      $version = 'dev';
       $arch    = 'aarch64';
       log "Using dev wasmtime, since the current prod version does not support your arch";
     }
