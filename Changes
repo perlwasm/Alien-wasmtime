@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}},
 
 {{$NEXT}}
+  - Remove memory test from t/alien_wasmtime.t.  This is better
+    handled in Wasm::Wasmtime now that the memory allocation
+    is more configurable (perlwasm/Wasm#22, gh#14)
 
 0.09      2020-05-15 10:57:43 -0600
   - Bump version of wasmtime to 0.16.0 (gh#12)
