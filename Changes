@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}},
 
 {{$NEXT}}
+  - Changed git repository default branch to `main`.
 
 0.10      2020-05-17 08:59:17 -0600
   - Remove memory test from t/alien_wasmtime.t.  This is better
