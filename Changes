@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}},
 
 {{$NEXT}}
+  - Bump to version 0.18.0 (gh#15)
+  - Arm64 / Aarch64 no longer forced the dev version as 0.18.0
+    properly supports Arm64 (gh#15)
   - Changed git repository default branch to `main`.
 
 0.10      2020-05-17 08:59:17 -0600
