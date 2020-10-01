@@ -13,10 +13,11 @@ script:
 jobs:
   include:
     - env: CIP_TAG=static
-    - env: CIP_TAG=5.31
-    - env: CIP_TAG=5.30 CIP_ENV=ALIEN_WASMTIME_VERSION=dev
-    - env: CIP_TAG=5.30-buster-arm64v8
+    - env: CIP_TAG=5.33
+    - env: CIP_TAG=5.32 CIP_ENV=ALIEN_WASMTIME_VERSION=dev
+    - env: CIP_TAG=5.32-buster-arm64v8
       arch: arm64
+    - env: CIP_TAG=5.32
     - env: CIP_TAG=5.30
     - env: CIP_TAG=5.28
     - env: CIP_TAG=5.26
