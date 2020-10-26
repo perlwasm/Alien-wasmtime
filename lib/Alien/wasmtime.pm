@@ -20,9 +20,12 @@ use base qw( Alien::Base );
 
 =head1 DESCRIPTION
 
-This L<Alien> provides C<wasmtime> a runtime for Wasm (Web Assembly).
-It's intended to be used by FFI (not XS) to build Wasm bindings for
-Perl.
+B<NOTE>: If you want to call WebAssembly from Perl you want to use
+L<Wasm> or L<Wasm::Wasmtime> instead.
+
+This L<Alien> provides C<wasmtime> a library runtime for Wasm
+(WebAssembly).  It's intended to be used by FFI (not XS) to build
+Wasm bindings for Perl.
 
 =head1 METHODS
 

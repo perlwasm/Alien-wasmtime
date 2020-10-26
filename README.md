@@ -16,9 +16,12 @@ my $ffi = FFI::Platypus->new(
 
 # DESCRIPTION
 
-This [Alien](https://metacpan.org/pod/Alien) provides `wasmtime` a runtime for Wasm (Web Assembly).
-It's intended to be used by FFI (not XS) to build Wasm bindings for
-Perl.
+**NOTE**: If you want to call WebAssembly from Perl you want to use
+[Wasm](https://metacpan.org/pod/Wasm) or [Wasm::Wasmtime](https://metacpan.org/pod/Wasm::Wasmtime) instead.
+
+This [Alien](https://metacpan.org/pod/Alien) provides `wasmtime` a library runtime for Wasm
+(WebAssembly).  It's intended to be used by FFI (not XS) to build
+Wasm bindings for Perl.
 
 # METHODS
 
