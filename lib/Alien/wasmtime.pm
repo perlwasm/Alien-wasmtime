@@ -64,11 +64,21 @@ This L<Alien> is geared for use with FFI only.
 
 =over 4
 
+=item L<Wasm>
+
+High level interface to WebAssembly which uses wasmtime under the covers.
+
 =item L<Wasm::Wasmtime>
+
+Lower-level direct interface to Wasmtime itself from Perl.
 
 =item L<Alien>
 
+Documentation for the Perl / Alien concept.
+
 =item L<FFI::Platypus>
+
+Foreign function interface to dynamic libraries in perl via C<libffi>.
 
 =back
 
