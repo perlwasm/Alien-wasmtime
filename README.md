@@ -58,9 +58,21 @@ This [Alien](https://metacpan.org/pod/Alien) is geared for use with FFI only.
 
 # SEE ALSO
 
+- [Wasm](https://metacpan.org/pod/Wasm)
+
+    High level interface to WebAssembly which uses wasmtime under the covers.
+
 - [Wasm::Wasmtime](https://metacpan.org/pod/Wasm::Wasmtime)
+
+    Lower-level direct interface to Wasmtime itself from Perl.
+
 - [Alien](https://metacpan.org/pod/Alien)
+
+    Documentation for the Perl / Alien concept.
+
 - [FFI::Platypus](https://metacpan.org/pod/FFI::Platypus)
+
+    Foreign function interface to dynamic libraries in perl via `libffi`.
 
 # AUTHOR
 
