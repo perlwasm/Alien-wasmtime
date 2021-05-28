@@ -1,4 +1,4 @@
-# Alien::wasmtime [![Build Status](https://api.travis-ci.com/perlwasm/Alien-wasmtime.svg?branch=main)](https://travis-ci.com/github/perlwasm/Alien-wasmtime) ![linux](https://github.com/perlwasm/Alien-wasmtime/workflows/linux/badge.svg) ![windows](https://github.com/perlwasm/Alien-wasmtime/workflows/windows/badge.svg) ![macos](https://github.com/perlwasm/Alien-wasmtime/workflows/macos/badge.svg)
+# Alien::wasmtime ![linux](https://github.com/perlwasm/Alien-wasmtime/workflows/linux/badge.svg) ![windows](https://github.com/perlwasm/Alien-wasmtime/workflows/windows/badge.svg) ![macos](https://github.com/perlwasm/Alien-wasmtime/workflows/macos/badge.svg)
 
 Find or download wasmtime for use by other Perl modules
 
