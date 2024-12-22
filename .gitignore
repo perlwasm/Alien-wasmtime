@@ -2,4 +2,7 @@ Alien-wasmtime-*
 /.build/
 *.swp
 
-
+/Alien-wasmtime-*
+/.build
+*.old
+*.orig

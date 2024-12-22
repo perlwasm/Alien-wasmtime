@@ -19,13 +19,17 @@ jobs:
         cip:
           - tag: static
             install_type: default
-          - tag: "5.37"
+          - tag: "5.41"
             install_type: share
-          - tag: "5.36"
+          - tag: "5.40"
             install_type: share
-          - tag: "5.36"
+          - tag: "5.40"
             install_type: share
             env: ALIEN_WASMTIME_VERSION=dev
+          - tag: "5.38"
+            install_type: share
+          - tag: "5.36"
+            install_type: share
           - tag: "5.34"
             install_type: share
           - tag: "5.32"
