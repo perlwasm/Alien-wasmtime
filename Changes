@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.19      2026-09-03 07:24:04 -0600
   - Add support for ARM64 (aarch64) on macOS and Windows (gh#2)
   - Add support for i686 (32-bit x86) on Linux (gh#2)
 
