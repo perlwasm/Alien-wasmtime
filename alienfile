@@ -7,44 +7,65 @@ configure {
 };
 
 my $version = $ENV{ALIEN_WASMTIME_VERSION} || 'v48.0.1';
-my $arch = 'x86_64';
+my $arch;
+
+my $unsupported = sub {
+  my($os, $arches) = @_;
+  $arches ||= 'x86_64 and arm64';
+  print "Only $arches are supported on $os.\n";
+  print "If we are missing a binary tarball that could work for your platform, please comment here:\n";
+  print "https://github.com/perlwasm/Alien-wasmtime/issues/2\n";
+  exit;
+};
 
 if($^O eq 'linux')
 {
   # archname=x86_64-linux-gnu-thread-multi
   if($Config{archname} =~ /^(x86_64|aarch64)-linux/ && $Config{ptrsize} == 8)
   {
-    if($1 eq 'aarch64')
-    {
-      $arch    = 'aarch64';
-    }
+    $arch = $1;
+  }
+  # archname=i686-linux / i386-linux-gnu-thread-multi
+  elsif($Config{archname} =~ /^i[3-6]86-linux/ && $Config{ptrsize} == 4)
+  {
+    $arch = 'i686';
   }
   else
   {
-    print "Only x86_64 and arm64 are supported on Linux.\n";
-    print "If we are missing a binary tarball that could work for your platform, please comment here:\n";
-    print "https://github.com/perlwasm/Alien-wasmtime/issues/2\n";
-    exit;
+    $unsupported->('Linux', 'x86_64, arm64, and i686');
   }
 }
 elsif($^O eq 'MSWin32')
 {
-  if($Config{archname} !~ /^MSWin32-x64/ || $Config{ptrsize} != 8)
+  # archname=MSWin32-x64-multi-thread / MSWin32-ARM64-multi-thread
+  if($Config{ptrsize} == 8 && $Config{archname} =~ /^MSWin32-(x64|ARM64)/i)
   {
-    print "Only x86_64 is supported on Windows.\n";
-    print "If we are missing a binary tarball that could work for your platform, please comment here:\n";
-    print "https://github.com/perlwasm/Alien-wasmtime/issues/2\n";
-    exit;
+    $arch = lc($1) eq 'arm64' ? 'aarch64' : 'x86_64';
+  }
+  else
+  {
+    $unsupported->('Windows');
   }
 }
 elsif($^O eq 'darwin')
 {
-  if($Config{myarchname} !~ /^i386-darwin/ || $Config{ptrsize} != 8)
+  # macOS ships perl as a universal binary, so $Config{archname} does not
+  # reliably tell us which architecture we are actually running as.  Ask
+  # the kernel for the hardware we are executing on instead.
+  require POSIX;
+  my $machine = (POSIX::uname())[4] || '';
+
+  if($Config{ptrsize} == 8 && $machine =~ /^(arm64|aarch64)$/)
   {
-    print "Only x86_64 is supported on macOS / darwin\n";
-    print "If we are missing a binary tarball that could work for your platform, please comment here:\n";
-    print "https://github.com/perlwasm/Alien-wasmtime/issues/2\n";
-    exit;
+    $arch = 'aarch64';
+  }
+  elsif($Config{ptrsize} == 8 && $machine =~ /^x86_64$/)
+  {
+    $arch = 'x86_64';
+  }
+  else
+  {
+    $unsupported->('macOS / darwin');
   }
 }
 else
@@ -88,5 +109,3 @@ share {
     $build->runtime_prop->{libs}    = "-L@{[ $build->runtime_prop->{prefix} ]}/lib -lwasmtime ";
   };
 };
-
-
