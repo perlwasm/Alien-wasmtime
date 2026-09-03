@@ -20,7 +20,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
 
       - name: Prepare for cache
         run: |
@@ -28,7 +28,7 @@ jobs:
           ls -l perlversion.txt
 
       - name: Cache CPAN modules
-        uses: actions/cache@v1
+        uses: actions/cache@v6
         env:
           cache-name: cache-cpan-modules
         with:
