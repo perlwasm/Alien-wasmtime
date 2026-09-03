@@ -19,13 +19,14 @@ jobs:
         cip:
           - tag: static
             install_type: default
-          - tag: "5.41"
+          - tag: "5.45"
+            install_type: share
+          - tag: "5.44"
+            install_type: share
+          - tag: "5.42"
             install_type: share
           - tag: "5.40"
             install_type: share
-          - tag: "5.40"
-            install_type: share
-            env: ALIEN_WASMTIME_VERSION=dev
           - tag: "5.38"
             install_type: share
           - tag: "5.36"
@@ -64,7 +65,7 @@ jobs:
       CIP_ENV: ALIEN_INSTALL_TYPE=${{ matrix.cip.install_type }} ${{ matrix.cip.env }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
 
       - name: Bootstrap CIP
         run: |
@@ -77,7 +78,7 @@ jobs:
           cip cache-key
 
       - name: Cache CPAN modules
-        uses: actions/cache@v2
+        uses: actions/cache@v6
         with:
           path: ~/.cip
           key: ${{ runner.os }}-build-${{ steps.cache-key.outputs.key }}
