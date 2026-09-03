@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.18      2026-09-02 19:39:26 -0600
   - Bump to version 48.0.1 (gh#31
 
 0.17      2022-11-03 20:30:10 -0600
